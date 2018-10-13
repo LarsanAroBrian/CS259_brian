@@ -12,9 +12,10 @@ void dot_prod_kernel(const float* a, const float* b, float* c, const int num_ele
 #pragma HLS interface s_axilite port = num_elems bundle = control
 #pragma HLS interface s_axilite port = return bundle = control
   assert(num_elems <= 4096);  // this helps HLS estimate the loop trip count
-  /***************************
-   * your code goes here ... *
-   ***************************/
+*c=0;
+for(int i=0;i<num_elems;i++){
+	*c += a[i]*b[i];	
+}
 }
 
 }  // extern "C"
